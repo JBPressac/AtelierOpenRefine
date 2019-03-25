@@ -7,6 +7,6 @@ Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré le f
 
 Vous remarquez également en appliquant un filtre dans Excel quelques erreurs de saisie. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé ». Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151). OpenRefine peut vous aider à
 1. identifier les erreurs de saisie et les corriger,
-- séparer les noms de communes dans plusieurs colonnes,
-- récupérer les coordonnées spatiales depuis la base de données Wikidata
-- exporter les noms des communes et les coordonnées spatiales pour les afficher sur une carte du site uMap.
+2. séparer les noms de communes dans plusieurs colonnes,
+3. récupérer les coordonnées spatiales depuis la base de données Wikidata
+4. exporter les noms des communes et les coordonnées spatiales pour les afficher sur une carte du site uMap.
