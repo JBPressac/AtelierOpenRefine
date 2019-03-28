@@ -9,7 +9,7 @@ OpenRefine peut importer des données tabulaires, c'est à dire structurées en 
 
   [61446736]: https://fr.wikipedia.org/wiki/Comma-separated_values "Comma-separated values"
 
-Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré [le fichier Excel de l'inventaire des cylindres phonographiques](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) du Centre de recherche bretonne et celtique et vous avez remarqué qu'il contenait une colonne avec le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien les afficher sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
+Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré [le fichier Excel de l'inventaire des cylindres phonographiques](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) du Centre de recherche bretonne et celtique. Dans ce fichier, chaque ligne correspond à un cylindre et vous avez remarqué qu'une colonne, _Dublin Core Spatial Coverage_ contient le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien afficher les communes sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
 
 OpenRefine peut vous servir à :
 1. identifier les erreurs de saisie et les corriger,
@@ -75,6 +75,17 @@ L'équivalent OpenRefine des filtres de Excel ou LibreOffice Calc sont les facet
 
 Vous pouvez cumuler l'affichage de plusieurs facettes (ex. afficher uniquement les cylindres dont la commune contient le mot « Saint » et de la marque « Maison de la bonne presse »).
 
+Vous pouvez afficher l'inverse d'une sélection. Par exemple, dans l'inventaire des cylindres phonographiques, la commune (la colonne _Dublin Core Spatial Coverage_) n'est pas toujours indiquée. Pour afficher les cylindres sans commune, on applique une facette textuelle (_Text facet_) sur la colonne et on clique sur _(blank)_.
+
+![blank](Files/2019-03-28 17_44_41-Window.png)
+
+Pour afficher uniquement les cylindres pour lesquels la commune a été renseignée, on clique ensuite sur _invert_.
+
+![invert](Files/2019-03-28 17_44_54-Window.png)
+
+L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affiche l'inverse d'une sélection. Pour réinitialiser la facette, cliquez sur _reset_.
+
+![invert](Files/2019-03-28 17_45_08-Window.png)
 
 
 Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez à réinitialiser les facettes pour appliquer une fonction sur toutes les lignes du projet.
