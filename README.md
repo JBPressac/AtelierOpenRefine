@@ -1,9 +1,11 @@
 # Atelier OpenRefine, Nanterre, 5 avril 2019
-[OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données. Avec OpenRefine, vous pourrez trier vos données, les filtrer, repérer des valeurs manquantes, incomplètes ou aberrantes, supprimer les doublons, harmoniser les valeurs, diviser le contenu d'une colonne en plusieurs colonnes ou plusieurs lignes, assembler le contenu de plusieurs colonnes en une seule, enrichir les données à partir de bases de données telles que [Wikidata][70123744].
+[OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
+
+Avec OpenRefine, vous pourrez trier vos données, les filtrer, repérer des valeurs manquantes, incomplètes ou aberrantes, supprimer les doublons, harmoniser les valeurs, diviser le contenu d'une colonne en plusieurs colonnes ou plusieurs lignes, assembler le contenu de plusieurs colonnes en une seule, enrichir les données à partir de bases de données telles que [Wikidata][70123744].
 
   [70123744]: https://outiquanti.hypotheses.org/875 "Découverte de Wikidata"
 
-OpenRefine peut importer des données tabulaires, c'est à dire structurées en lignes et en colonnes telles que des fichiers Microsoft Excel, LibreOffice Calc, OpenOffice Calc, Google Documents, [CSV][61446736], TSV. Il peut aussi traiter des fichiers XML et JSON et se connecter à une base de données relationnelle (type MySQL ou PostgreSQL).
+OpenRefine peut importer des données tabulaires, c'est à dire structurées en lignes et en colonnes telles que des fichiers Microsoft Excel, LibreOffice Calc, OpenOffice Calc, Google Documents, [CSV][61446736], TSV. Il peut aussi importer des fichiers XML, JSON ou des données stockées dans des bases de données relationnelles (de type MySQL ou PostgreSQL).
 
   [61446736]: https://fr.wikipedia.org/wiki/Comma-separated_values "Comma-separated values"
 
@@ -29,22 +31,53 @@ OpenRefine est en anglais par défaut. Il est conseillé de conserver l'interfac
 Pour le détail des opérations, voir [Créer une carte avec Wikidata, OpenRefine et uMap](https://bylg.hypotheses.org/543).
 
 ## Avant d'aller plus loin
+### Une interface web
 
 L'interface de OpenRefine est accessible depuis une page web (http://127.0.0.1:3333/). C'est pourquoi votre navigateur web par défaut est lancé au démarrage de OpenRefine.
 
 Mais qui dit navigateur web ne dit pas « accès autorisé à tous ». Vous êtes seul à pouvoir accéder à cette interface et les données importées restent sur votre ordinateur.
 
-OpenRefine fonctionne par projet. Pour accéder de nouveau aux données de l'inventaire des cylindres phonographiques, cliquer dans le menu de gauche _Open Project_ (_Ouvrir un projet_) depuis la page d'accueil.
+### Un fonctionnement par projets
 
-Tant que le projet n'est pas supprimé, les données importées restent présentes dans OpenRefine. Toutes les opérations sont automatiquement sauvegardées dans l'historique du projet. Vous pouvez quitter OpenRefine sans crainte pour vos projets en cours.
+OpenRefine fonctionne par projet. Il faut créer un projet pour importer des données.
 
-OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc.
+Pour revenir sur des données précédemment importées, il faut ouvrir le projet associé. Pour accéder de nouveau aux données de l'inventaire des cylindres phonographiques, cliquer dans le menu de gauche _Open Project_ (_Ouvrir un projet_) depuis la page d'accueil.
 
-Les menus dans OpenRefine ne sont pas affichés comme dans des logiciels classiques (Word, Photoshop, Firefox, etc.) mais apparaissent en cliquant sur les flèches à côté du titre de chaque colonne.
+### Une sauvegarde automatique
 
-Bonne pratique avant de traiter les données d'une colonne : Appliquer la fonction de suppression des espaces supplémentaires : _Edit cells > Common transforms > Trim leading and trailling whitespace_ (_Editer les cellules > Transformations courantes > Supprimer les espaces de début et de fin_).
+Tant que le projet n'est pas supprimé, les données importées restent présentes dans OpenRefine.
 
-Pour avoir un apperçu des
+Il n'y a pas de Ctrl + S ou de Pomme + S dans OpenRefine pour sauvegarder votre projet. Toutes les opérations depuis l'importation des données sont automatiquement sauvegardées dans l'historique du projet.
+
+De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler une opération, il suffit d'aller dans l'historique du projet et de cliquer sur l'étape précédente.
+
+### OpenRefine ne modifie pas vos fichiers originaux
+
+OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_) puis cliquez sur _Browse workspace directory_.
+
+![Browse workspace directory](Files/2019-03-28 14_45_28-Window.png)
+
+![Browse workspace directory](Files/2019-03-28 14_29_48-Window.png)
+
+Le contenu du dossier de travail ne vous permettra pas de récupérer vos données une fois nettoyées, vous utiliserez pour cela les fonctions d'exportation de OpenRefine, affichées en haut et à droite de chaque projet. Mais il est conseillé de sauvegarder le dossier de travail avant une mise à jour de OpenRefine. Si vous changez d'ordinateur, vous pourrez récupérer vos projets en cours en copiant ce dossier.
+
+### Le même menu pour chaque colonne
+
+Les menus dans OpenRefine ne sont pas affichés comme dans des logiciels classiques (Word, Photoshop, Firefox, etc.) mais apparaissent en cliquant sur les flèches à côté du titre de chaque colonne. Les menus de chaque colonne, à l'exception de la première colonne du projet proposent toutes les mêmes fonctions.
+
+### Supprimer les espaces de début et de fin
+
+Bonne pratique avant de traiter les données d'une colonne : Appliquer la fonction de suppression des espaces supplémentaires : _Edit cells > Common transforms > Trim leading and trailling whitespace_ (_Editer les cellules > Transformations courantes > Supprimer les espaces de début et de fin_). La présence d'espaces supplémentaires arrive fréquemment, autant régler tout de suite le problème.
+
+### Filtrer les données d'une colonne avec une facette
+
+L'équivalent OpenRefine des filtres de Excel ou LibreOffice Calc sont les facettes. Pour avoir un aperçu rapide des valeurs d'une colonne, ou filtrer les lignes du projet en fonction des valeurs d'une colonne (par ex. afficher tous les cylindres dont la commune contient le mot « Saint »).
+
+Vous pouvez cumuler l'affichage de plusieurs facettes (ex. afficher uniquement les cylindres dont la commune contient le mot « Saint » et de la marque « Maison de la bonne presse »).
+
+
+
+Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez à réinitialiser les facettes pour appliquer une fonction sur toutes les lignes du projet.
 
 ## Atelier n°2 : Nettoyage des réponses à un questionnaire
 
