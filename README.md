@@ -93,3 +93,5 @@ Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez �
 ## Atelier n°2 : Nettoyage des réponses à un questionnaire
 
 Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en ligne mais certaines réponses étaient libres, notamment la commune de résidence et les diplômes obtenus. Comment uniformiser les réponses pour les analyser avec le logiciel R ?
+
+[Téléchager le fichier XLS](Files/Avoir60ans.xlsx)
