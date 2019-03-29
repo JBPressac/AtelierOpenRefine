@@ -85,7 +85,7 @@ Pour afficher uniquement les cylindres pour lesquels la commune a été renseign
 
 L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affiche l'inverse d'une sélection. Pour réinitialiser la facette, cliquez sur _reset_.
 
-![invert](Files/2019-03-28 17_45_08-Window.png)
+![invert](Files/2019-03-28 17_45_08-Window.jpg)
 
 
 Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez à réinitialiser les facettes pour appliquer une fonction sur toutes les lignes du projet.
