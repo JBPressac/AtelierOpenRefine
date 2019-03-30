@@ -120,9 +120,9 @@ Pour uniformiser le nom des communes, trois solutions :
 
 Editer à la main les cellules du tableau (commande _edit_ au survol des cellules du tableau ou au survol des valeurs affichées dans la facette).
 
-Se le nombre de cellules à nettoyer est trop élevé pour une édition à la main, on peut s'aider des algorithmes du menu _Edit cells > Cluster and edit_ (_Editer les cellules > Grouper et éditer_). Cette fonction est également accessible depuis le lien _Cluster_ des facettes. 
+Se le nombre de cellules à nettoyer est trop élevé pour une édition à la main, on peut s'aider des algorithmes du menu _Edit cells > Cluster and edit_ (_Editer les cellules > Grouper et éditer_). Cette fonction est également accessible depuis le lien _Cluster_ des facettes.
 
-![Cluster](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30_21_31_24_Avoir60ansxlsx_OpenRefine)
+![Cluster](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30_21_31_24_Avoir60ansxlsx_OpenRefine.png)
 
 Pour comprendre les différents algorithmes, voir [le cours de Matthieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/explorer-et-nettoyer-ses-donnees.html#regrouper-des-valeurs-proches).
 
