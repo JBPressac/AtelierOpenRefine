@@ -63,7 +63,7 @@ De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler
 
 OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_) puis cliquez sur _Browse workspace directory_.
 
-![Browse workspace directory](AtelierOpenRefine/Files/2019-03-28 14_29_48-Window.png)
+![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
 
 ![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_29_48-Window.png)
 
