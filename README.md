@@ -63,9 +63,9 @@ De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler
 
 OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_) puis cliquez sur _Browse workspace directory_.
 
-![Browse workspace directory](Files/2019-03-28 14_45_28-Window.png)
+![Browse workspace directory](/blob/master/Files/2019-03-28 14_45_28-Window.png)
 
-![Browse workspace directory](Files/2019-03-28 14_29_48-Window.png)
+![Browse workspace directory](/blob/master/Files/2019-03-28 14_29_48-Window.png)
 
 Le contenu du dossier de travail ne vous permettra pas de récupérer vos données une fois nettoyées, vous utiliserez pour cela les fonctions d'exportation de OpenRefine, affichées en haut et à droite de chaque projet. Mais il est conseillé de sauvegarder le dossier de travail avant une mise à jour de OpenRefine. Si vous changez d'ordinateur, vous pourrez récupérer vos projets en cours en copiant ce dossier.
 
