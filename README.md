@@ -1,4 +1,12 @@
 # Atelier OpenRefine, Nanterre, 5 avril 2019
+
+A faire :
+- Revenir sur la notion de row et records.
+- Revenir sur la possibilité de réordonner les colonnes depuis le menu de la première colonne
+- Modification de la valeur d'une cellule dans la facette ou avec _edit_ dans la cellule
+- TP avec l'union de deux projets
+- TP avec GREL (aborder les types de données)
+
 [OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
 
 Avec OpenRefine, vous pourrez trier vos données, les filtrer, repérer des valeurs manquantes, incomplètes ou aberrantes, supprimer les doublons, harmoniser les valeurs, diviser le contenu d'une colonne en plusieurs colonnes ou plusieurs lignes, assembler le contenu de plusieurs colonnes en une seule, enrichir les données à partir de bases de données telles que [Wikidata][70123744].
@@ -9,7 +17,7 @@ OpenRefine peut importer des données tabulaires, c'est à dire structurées en 
 
   [61446736]: https://fr.wikipedia.org/wiki/Comma-separated_values "Comma-separated values"
 
-Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré [le fichier Excel de l'inventaire des cylindres phonographiques](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) du Centre de recherche bretonne et celtique. Dans ce fichier, chaque ligne correspond à un cylindre et vous avez remarqué qu'une colonne, _Dublin Core Spatial Coverage_ contient le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien afficher les communes sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
+Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré [le fichier Excel de l'inventaire](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) des [cylindres phonographiques](https://fr.wikipedia.org/wiki/Cylindre_phonographique) du [Centre de recherche bretonne et celtique](https://bylg.hypotheses.org/464). Dans ce fichier, chaque ligne correspond à un cylindre et vous avez remarqué qu'une colonne, _Dublin Core Spatial Coverage_ contient le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien afficher les communes sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
 
 OpenRefine peut vous servir à :
 1. identifier les erreurs de saisie et les corriger,
@@ -90,8 +98,25 @@ L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affi
 
 Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez à réinitialiser les facettes pour appliquer une fonction sur toutes les lignes du projet.
 
+### Tris permanents
+
+Lorsque vous appliquez un tri sur une colonne (commande _Sort_ du menu de la colonne), les lignes sont affichées dans l'ordre du tri, mais il ne s'agit que d'un affichage, l'ordre des lignes, indiqué par le numéro affiché dans la première colonne, _All_ (_Toutes_), reste identique. Par conséquent, si vous exportez les données après un tri non permanent, vous constaterez dans le fichier d'export que les lignes auront conservé leur ordre original. De même, si vous quittez le projet, le tri ne sera pas sauvegardé. Pour rendre un tri permanent, cliquez sur _Reorder rows permanently_ du menu _Sort_.
+
+![Reorder rows permanently](Files/2019-03-30 12_49_11-Avoir60ans xlsx - OpenRefine.png)
+
 ## Atelier n°2 : Nettoyage des réponses à un questionnaire
 
 Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en ligne mais certaines réponses étaient libres, notamment la commune de résidence et les diplômes obtenus. Comment uniformiser les réponses pour les analyser avec le logiciel R ?
 
-[Téléchager le fichier XLS](Files/Avoir60ans.xlsx)
+[Télécharger le fichier XLS](Files/Avoir60ans.xlsx)
+
+1. Créez un nouveau projet OpenRefine et importez le fichier Excel.
+2. Appliquez une facette textuelle sur la colonne de la commune de résidence.
+3. Supprimez les espaces de début et de fin.
+3. Uniformisez les noms des communes. Les noms des communes doivent commencer par une majuscule et il faut supprimer les départements indiqués entre parenthèses.
+
+Pour uniformiser le nom des communes, trois solutions :
+
+Editer à la main les cellules du tableau (commande _edit_ au survol des cellules du tableau ou au survol des valeurs affichées dans la facette).
+
+Le problème, avec les précédentes solutions, c'est qu'elles ne permettent pas d'identifier formellement les communes. Par exemple, Tréméven est-elle [Tréméven](https://www.wikidata.org/wiki/Q688371) dans le Finistère ou [Tréméven](https://www.wikidata.org/wiki/Q214578) dans les Côtes-d'Armor ? La solution : Utiliser la réconciliation avec Wikikata : Faire une copie de la commune originale (_Edit column > Edit column based on this column_) puis sur la nouvelle colonne : _Reconcile > Start reconciling_.
