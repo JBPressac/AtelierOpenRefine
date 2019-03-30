@@ -61,9 +61,11 @@ De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler
 
 ### OpenRefine ne modifie pas vos fichiers originaux
 
-OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_) puis cliquez sur _Browse workspace directory_.
+OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_)...
 
 ![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
+
+... puis cliquez sur _Browse workspace directory_.
 
 ![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_29_48-Window.png)
 
@@ -85,16 +87,15 @@ Vous pouvez cumuler l'affichage de plusieurs facettes (ex. afficher uniquement l
 
 Vous pouvez afficher l'inverse d'une sélection. Par exemple, dans l'inventaire des cylindres phonographiques, la commune (la colonne _Dublin Core Spatial Coverage_) n'est pas toujours indiquée. Pour afficher les cylindres sans commune, on applique une facette textuelle (_Text facet_) sur la colonne et on clique sur _(blank)_.
 
-![blank](Files/2019-03-28 17_44_41-Window.png)
+![blank](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_44_41-Window.png)
 
 Pour afficher uniquement les cylindres pour lesquels la commune a été renseignée, on clique ensuite sur _invert_.
 
-![invert](Files/2019-03-28 17_44_54-Window.png)
+![invert](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_44_54-Window.png)
 
 L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affiche l'inverse d'une sélection. Pour réinitialiser la facette, cliquez sur _reset_.
 
-![invert](Files/2019-03-28 17_45_08-Window.jpg)
-
+![invert](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_45_08-Window.jpg)
 
 Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez à réinitialiser les facettes pour appliquer une fonction sur toutes les lignes du projet.
 
@@ -102,7 +103,7 @@ Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez �
 
 Lorsque vous appliquez un tri sur une colonne (commande _Sort_ du menu de la colonne), les lignes sont affichées dans l'ordre du tri, mais il ne s'agit que d'un affichage, l'ordre des lignes, indiqué par le numéro affiché dans la première colonne, _All_ (_Toutes_), reste identique. Par conséquent, si vous exportez les données après un tri non permanent, vous constaterez dans le fichier d'export que les lignes auront conservé leur ordre original. De même, si vous quittez le projet, le tri ne sera pas sauvegardé. Pour rendre un tri permanent, cliquez sur _Reorder rows permanently_ du menu _Sort_.
 
-![Reorder rows permanently](Files/2019-03-30 12_49_11-Avoir60ans xlsx - OpenRefine.png)
+![Reorder rows permanently](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30%2012_49_11-Avoir60ans%20xlsx%20-%20OpenRefine.png)
 
 ## Atelier n°2 : Nettoyage des réponses à un questionnaire
 
