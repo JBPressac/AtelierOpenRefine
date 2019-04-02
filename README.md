@@ -114,7 +114,7 @@ Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en lig
 
 1. Créez un nouveau projet OpenRefine et importez le fichier Excel.
 2. Appliquez une facette textuelle sur la colonne de la commune de résidence.
-3. Supprimez les espaces de début et de fin.
+3. Supprimez les espaces de début et de fin (`Edit cells > Common transforms > Trim leading and trailing whitespace`) et les espaces consécutifs (`Edit cells > Common transforms > Collapse consecutive whitespace`) des noms de communes.
 3. Uniformisez les noms des communes. Les noms des communes doivent commencer par une majuscule et il faut supprimer les départements indiqués entre parenthèses.
 
 Pour uniformiser le nom des communes, trois solutions :
@@ -149,4 +149,18 @@ Certaines communes n'ont pas été réconciliées automatiquement. Soit parce qu
 
 Si on applique une facette textuelle sur la colonne _Commune de résidence_, on peut s'appercevoir que les noms originaux des communes ont été conservés, ce qui est pratique pour les comparer avec les communes correspondantes dans Wikidata. Toutefois, si on exporte le projet en l'état, la colonne des communes contiendra ces noms originaux. Pour récupérer le nom officiel de la commune, on crée une nouvelle colonne en choisissant dans le menu de la colonne _Commune de résidence_, `Edit Column > Add column based on this column...` et dans la champ `Expression` on saisi `cell.recon.match.name`.
 
-> Cette formule mystérieuse est une expression en GREL (General Refine Expression Language), un language qui permet d'executer "à la main" des opérations dans OpenRefine. Pour en savoir plus sur le GREL, voir [le chapitre sur le GREL de la documentation officielle de OpenRefine](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) (en anglais) ou [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/annexe-structure-de-donnees-et-grel.html) (en français)
+> Cette formule mystérieuse est une expression en GREL (General Refine Expression Language), un language qui permet d'executer une série d'opérations dans OpenRefine. Pour en savoir plus sur le GREL, voir [le chapitre sur le GREL de la documentation officielle de OpenRefine](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) (en anglais) ou [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/annexe-structure-de-donnees-et-grel.html) (en français)
+
+## Atelier n°x : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
+
+Cet atelier s'inspire de "[Cleaning Data with OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine)", The Programming Historian 2 (2013), Seth van Hooland, Ruben Verborgh, and Max De Wilde. Vous trouverez dans cet article en ligne le détail des opérations à réaliser (en anglais).
+
+Le fichier à nettoyer, [phm-collection.tsv](https://programminghistorian.org/assets/phm-collection.tsv), est un extrait de l'inventaire des objets conservés au [Powerhouse Museum](https://maas.museum/powerhouse-museum/) de Sydney. Chaque ligne du fichier correspond à un objet décrit notamment par un numéro d'enregistrement (_Record ID_), un titre (_Object Title_), un deuxième numéro d'enregisrement (_Registration number_), un texte de description (_Description_) et des _Categories_ (spéciments botaniques, numismatique, échantillons de minéraux, électroménager, etc.).
+
+OpenRefine va nous servir à supprimer les lignes sans _Record ID_, à supprimer les doublons puis à nettoyer les catégories, séparées par des `|`.
+
+Importez dans OpenRefine le fichier phm-collection.tsv en décochant la case `Quotation marks are used to enclose cells containing column separators` et cochez la case `Parse cell text into numbers, dates, …`. Si vous avez bien paramétré l'import, le tableau des données doit comporter 75 814 lignes (ou `rows`).
+
+> Quand vous importez un fichier CSV ou TSV, vous avez la possibilité de spécifier son encodage. L'encodage est la manière de coder informatiquement des caractères alpha-numériques. Quelques encodages : UTF-8, ISO-8859-1, Windows-1252 (désigné sous le terme ANSI dans certains logiciels). OpenRefine ne detecte pas toujours très bien l'encodage des fichiers à importer, ce qui provoque des erreurs d'affichage des caractères accentués. Pour connaitre l'encodage des fichiers, vous pouvez les ouvrir avec Notepad++ (Microsoft Windows).
+
+A l'aide d'une facette numérique sur _Record ID_ et du menu `All > Edit rows > Remove all matching rows` de la première colonne, supprimez les lignes sans _Record ID_ (les cellules "vides" contiennent des espaces).
