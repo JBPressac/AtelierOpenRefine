@@ -6,6 +6,7 @@ A faire :
 - Modification de la valeur d'une cellule dans la facette ou avec _edit_ dans la cellule
 - TP avec l'union de deux projets
 - TP avec GREL (aborder les types de données)
+- Rechercher / remplacer
 
 [OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
 
@@ -32,7 +33,7 @@ Sous OpenRefine vous ne pourrez pas appliquer des formules mathématiques (calcu
 ## Installation de OpenRefine
 OpenRefine fonctionne sous Microsoft Windows, Mac OS et Linux. Vous trouverez toutes les instructions d'installation sur [la documentation officielle](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions) (en anglais) ou sur [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/installation-lancement-desinstallation.html) (en français). Sous Windows, vous aurez probablement besoin d'installer le logiciel [Java](https://www.java.com/fr/download/) (Java est installé par défaut sous Mac et Linux).
 
-OpenRefine est en anglais par défaut. Il est conseillé de conserver l'interface dans la langue de Shakespeare car la documentation officielle et la grande majorité des tutoriels que vous trouverez sur internet sont en anglais. Si vous préférez toutefois changer la langue, allez dans le menu _Language Settings_ affiché à gauche de [la page d'accueil](http://127.0.0.1:3333/) de OpenRefine.
+OpenRefine est en anglais par défaut. Il est conseillé de conserver l'interface dans la langue de Shakespeare car la documentation officielle et la grande majorité des tutoriels que vous trouverez sur internet sont en anglais. Si vous préférez toutefois changer la langue, allez dans le menu `Language Settings` affiché à gauche de [la page d'accueil](http://127.0.0.1:3333/) de OpenRefine.
 
 ## Atelier n°1 : Nettoyage d'une liste de communes bretonnes et récupération des coordonnées géographiques sur Wikidata
 
@@ -49,7 +50,7 @@ Mais qui dit navigateur web ne dit pas « accès autorisé à tous ». Vous ête
 
 OpenRefine fonctionne par projet. Il faut créer un projet pour importer des données.
 
-Pour revenir sur des données précédemment importées, il faut ouvrir le projet associé. Pour accéder de nouveau aux données de l'inventaire des cylindres phonographiques, cliquer dans le menu de gauche _Open Project_ (_Ouvrir un projet_) depuis la page d'accueil.
+Pour revenir sur des données précédemment importées, il faut ouvrir le projet associé. Pour accéder de nouveau aux données de l'inventaire des cylindres phonographiques, cliquer dans le menu de gauche `Open Project` (`Ouvrir un projet`) depuis la page d'accueil.
 
 ### Une sauvegarde automatique
 
@@ -61,11 +62,11 @@ De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler
 
 ### OpenRefine ne modifie pas vos fichiers originaux
 
-OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu _Open Project_)...
+OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu `Open Project`)...
 
 ![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
 
-... puis cliquez sur _Browse workspace directory_.
+... puis cliquez sur `Browse workspace directory`.
 
 ![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_29_48-Window.png)
 
@@ -77,7 +78,7 @@ Les menus dans OpenRefine ne sont pas affichés comme dans des logiciels classiq
 
 ### Supprimer les espaces de début et de fin
 
-Bonne pratique avant de traiter les données d'une colonne : Appliquer la fonction de suppression des espaces supplémentaires : _Edit cells > Common transforms > Trim leading and trailling whitespace_ (_Editer les cellules > Transformations courantes > Supprimer les espaces de début et de fin_). La présence d'espaces supplémentaires arrive fréquemment, autant régler tout de suite le problème.
+Bonne pratique avant de traiter les données d'une colonne : Appliquer la fonction de suppression des espaces supplémentaires : `Edit cells > Common transforms > Trim leading and trailling whitespace` (`Editer les cellules > Transformations courantes > Supprimer les espaces de début et de fin`). La présence d'espaces supplémentaires arrive fréquemment, autant régler tout de suite le problème.
 
 ### Filtrer les données d'une colonne avec une facette
 
@@ -85,15 +86,15 @@ L'équivalent OpenRefine des filtres de Excel ou LibreOffice Calc sont les facet
 
 Vous pouvez cumuler l'affichage de plusieurs facettes (ex. afficher uniquement les cylindres dont la commune contient le mot « Saint » et de la marque « Maison de la bonne presse »).
 
-Vous pouvez afficher l'inverse d'une sélection. Par exemple, dans l'inventaire des cylindres phonographiques, la commune (la colonne _Dublin Core Spatial Coverage_) n'est pas toujours indiquée. Pour afficher les cylindres sans commune, on applique une facette textuelle (_Text facet_) sur la colonne et on clique sur _(blank)_.
+Vous pouvez afficher l'inverse d'une sélection. Par exemple, dans l'inventaire des cylindres phonographiques, la commune (la colonne `Dublin Core Spatial Coverage`) n'est pas toujours indiquée. Pour afficher les cylindres sans commune, on applique une facette textuelle (`Text facet`) sur la colonne et on clique sur `(blank)`.
 
 ![blank](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_44_41-Window.png)
 
-Pour afficher uniquement les cylindres pour lesquels la commune a été renseignée, on clique ensuite sur _invert_.
+Pour afficher uniquement les cylindres pour lesquels la commune a été renseignée, on clique ensuite sur `invert`.
 
 ![invert](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_44_54-Window.png)
 
-L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affiche l'inverse d'une sélection. Pour réinitialiser la facette, cliquez sur _reset_.
+L'entête de la facette prend alors une couleur jaune pour indiquer qu'elle affiche l'inverse d'une sélection. Pour réinitialiser la facette, cliquez sur `reset`.
 
 ![invert](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2017_45_08-Window.jpg)
 
@@ -101,7 +102,7 @@ Attention, les fonctions ne s'appliquent que sur les lignes affichées. Pensez �
 
 ### Tris permanents
 
-Lorsque vous appliquez un tri sur une colonne (commande _Sort_ du menu de la colonne), les lignes sont affichées dans l'ordre du tri, mais il ne s'agit que d'un affichage, l'ordre des lignes, indiqué par le numéro affiché dans la première colonne, _All_ (_Toutes_), reste identique. Par conséquent, si vous exportez les données après un tri non permanent, vous constaterez dans le fichier d'export que les lignes auront conservé leur ordre original. De même, si vous quittez le projet, le tri ne sera pas sauvegardé. Pour rendre un tri permanent, cliquez sur _Reorder rows permanently_ du menu _Sort_.
+Lorsque vous appliquez un tri sur une colonne (commande `Sort` du menu de la colonne), les lignes sont affichées dans l'ordre du tri, mais il ne s'agit que d'un affichage, l'ordre des lignes, indiqué par le numéro affiché dans la première colonne, `All` (`Toutes`), reste identique. Par conséquent, si vous exportez les données après un tri non permanent, vous constaterez dans le fichier d'export que les lignes auront conservé leur ordre original. De même, si vous quittez le projet, le tri ne sera pas sauvegardé. Pour rendre un tri permanent, cliquez sur `Reorder rows permanently` du menu `Sort`.
 
 ![Reorder rows permanently](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30%2012_49_11-Avoir60ans%20xlsx%20-%20OpenRefine.png)
 
@@ -118,14 +119,30 @@ Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en lig
 
 Pour uniformiser le nom des communes, trois solutions :
 
-Editer à la main les cellules du tableau (commande _edit_ au survol des cellules du tableau ou au survol des valeurs affichées dans la facette).
+Editer à la main les cellules du tableau (commande `edit` au survol des cellules du tableau ou au survol des valeurs affichées dans la facette).
 
-Se le nombre de cellules à nettoyer est trop élevé pour une édition à la main, on peut s'aider des algorithmes du menu _Edit cells > Cluster and edit_ (_Editer les cellules > Grouper et éditer_). Cette fonction est également accessible depuis le lien _Cluster_ des facettes.
+Si le nombre de cellules à nettoyer est trop élevé pour une édition à la main, on peut s'aider des algorithmes du menu `Edit cells > Cluster and edit` (`Editer les cellules > Grouper et éditer`). Cette fonction est également accessible depuis le lien `Cluster` des facettes.
 
 ![Cluster](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30_21_31_24_Avoir60ansxlsx_OpenRefine.png)
 
-Pour comprendre les différents algorithmes, voir [le cours de Matthieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/explorer-et-nettoyer-ses-donnees.html#regrouper-des-valeurs-proches).
+> Pour comprendre les différents algorithmes, voir [le cours de Matthieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/explorer-et-nettoyer-ses-donnees.html#regrouper-des-valeurs-proches).
 
-Le problème, avec les précédentes solutions, c'est qu'elles ne permettent pas d'identifier formellement les communes. Par exemple, Tréméven est-elle [Tréméven](https://www.wikidata.org/wiki/Q688371) dans le Finistère ou [Tréméven](https://www.wikidata.org/wiki/Q214578) dans les Côtes-d'Armor ? La solution : Utiliser la réconciliation avec Wikikata : Faire une copie de la commune originale (_Edit column > Edit column based on this column_) puis sur la nouvelle colonne : _Reconcile > Start reconciling_.
+Le problème, avec les précédentes solutions, c'est qu'elles ne permettent pas d'identifier formellement les communes. Par exemple, Tréméven est-elle [Tréméven](https://www.wikidata.org/wiki/Q688371) dans le Finistère ou [Tréméven](https://www.wikidata.org/wiki/Q214578) dans les Côtes-d'Armor ? Les communes saisies correpondent-elles vraiment à des communes ? Comment repérer ces erreurs ? La solution : Utiliser la réconciliation avec la base de données en ligne [Wikidata](https://www.wikidata.org). Par contre, certaines personnes ont répondu en mettant entre parenthèses le nom ou le numéro du département. On aurait tord de ce priver de cette information.
 
-Les facettes affichées autoamtiquement après la réconciliation disparaitront à la fermeture de OpenRefine. Pour les afficher de nouveau, menu _Reconcile > Facet > By judgment_.
+Pour séparer le département dans une nouvelle colonne, on choisi dans le menu de la colonne _Commune de résidence_, `Edit column > Split into several columns`, on saisi comme séparateur une parenthèse ouvrante `(` et on coche la case `Remove this column`. On se retouve avec deux colonnes _Commune de résidence 1_ et _Commune de résidence 2_. En appliquant une facette textuelle sur _Commune de résidence 2_ on constate que certaines personnes ont répondu au questionnaire en confondant la parenthèse fermante avec le caractère °. On a donc par exemple `22°` au lieu de `22)`.
+
+On applique de nouveau la commande `Edit column > Split into several columns` mais sur la colonne _Commune de résidence 2_ et en saisisant cette fois `[)°]` comme séparateur. On coche la case `regular expression`.
+
+Faire une copie de la commune originale (`Edit column > Edit column based on this column`) puis sur la nouvelle colonne : `Reconcile > Start reconciling`.
+
+Selon Wikipédia, en informatique, une expression régulière (regex en abrégé) est une chaîne de caractères qui décrit un ensemble de chaînes de caractères possibles selon une syntaxe précise. Dans notre cas, l'expression régulière `[)°]` correspond soit au caractère `)`, soit au caractère `°`.
+
+On applique une facette textuelle sur la nouvelle colonne des départements et on remplace les noms en toutes lettres par le numéro du département. Par exemple, `Finistère` sera remplacé par `29`. Certains numéros de département sont considérés par OpenRefine comme des nombres. Pour faciliter l'affichage des valeurs avec une facette textuelle, on convertit toutes les valeurs en texte par `Edit Cells > Common transforms > To text`.
+
+Pour améliorer l'identification des colonnes, on renomme les colonnes en _Commune de résidence_ et _Code département_.
+
+On lance ensuite la réconciliation avec Wikidata avec le menu `Reconcile > Start reconciling...` sur la colonne _Commune de résidence_.
+
+`P131/P2586`
+
+> Les facettes affichées automatiquement après la réconciliation disparaitront à la fermeture de OpenRefine. Pour les afficher de nouveau, menu _Reconcile > Facet > By judgment_.
