@@ -5,7 +5,7 @@ A faire :
 - Revenir sur la possibilité de réordonner les colonnes depuis le menu de la première colonne
 - Modification de la valeur d'une cellule dans la facette ou avec _edit_ dans la cellule
 - TP avec l'union de deux projets
-- TP avec GREL (aborder les types de données)
+- TP avec GREL (aborder les types de données, assembler des colonnes avec GREL)
 - Rechercher / remplacer
 
 [OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
@@ -110,7 +110,7 @@ Lorsque vous appliquez un tri sur une colonne (commande `Sort` du menu de la col
 
 Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en ligne mais certaines réponses étaient libres, notamment la commune de résidence et les diplômes obtenus. Comment uniformiser les réponses pour les analyser avec le logiciel R ?
 
-[Télécharger le fichier XLS](Files/Avoir60ans.xlsx)
+[Télécharger le fichier XLS](Files/Avoir60ans.xlsx), un inventaire réalisé dans le cadre de travaux dirigés en sciences sociales de l'Université de Bretagne Occidentale (merci à Nicole Roux).
 
 1. Créez un nouveau projet OpenRefine et importez le fichier Excel.
 2. Appliquez une facette textuelle sur la colonne de la commune de résidence.
@@ -159,8 +159,24 @@ Le fichier à nettoyer, [phm-collection.tsv](https://programminghistorian.org/as
 
 OpenRefine va nous servir à supprimer les lignes sans _Record ID_, à supprimer les doublons puis à nettoyer les catégories, séparées par des `|`.
 
+### Importer un fichier TSV (Tab-separated values)
+
 Importez dans OpenRefine le fichier phm-collection.tsv en décochant la case `Quotation marks are used to enclose cells containing column separators` et cochez la case `Parse cell text into numbers, dates, …`. Si vous avez bien paramétré l'import, le tableau des données doit comporter 75 814 lignes (ou `rows`).
 
 > Quand vous importez un fichier CSV ou TSV, vous avez la possibilité de spécifier son encodage. L'encodage est la manière de coder informatiquement des caractères alpha-numériques. Quelques encodages : UTF-8, ISO-8859-1, Windows-1252 (désigné sous le terme ANSI dans certains logiciels). OpenRefine ne detecte pas toujours très bien l'encodage des fichiers à importer, ce qui provoque des erreurs d'affichage des caractères accentués. Pour connaitre l'encodage des fichiers, vous pouvez les ouvrir avec Notepad++ (Microsoft Windows).
 
-A l'aide d'une facette numérique sur _Record ID_ et du menu `All > Edit rows > Remove all matching rows` de la première colonne, supprimez les lignes sans _Record ID_ (les cellules "vides" contiennent des espaces).
+### Supprimer des lignes
+
+A l'aide d'une facette numérique sur _Record ID_ et du menu `All > Edit rows > Remove all matching rows` de la première colonne, supprimez les lignes sans _Record ID_ (les cellules "vides" contiennent des espaces). A l'issue de la suppression, il doit rester 75 811 lignes.
+
+### Supprimer des lignes en doublons
+
+Il existe des lignes avec le même _Record ID_. La colonne étant de type numérique, il n'est pas possible d'afficher les doublons mais vous pouvez les afficher en créant une copie de la colonne, en convertissant ses valeurs en type chaîne de caractères puis en appliquant une facette textuelle qui indique le nombre d'occurences d'une valeur.
+
+Pour supprimer les doublons, triez le contenu de la colonne et rendez le tri permanent avec `Reorder rows permanently` du menu `Sort`. Appliquez la commande `Edit cells > Blank down` sur la colonne _Record ID_. Si tout va bien, le contenu de la colonne est vidée sur 84 lignes. Le fait de vider le contenu de ces lignes crée des _records_ ou _entrées_. Il faut prendre garde de bien rester en mode d'affichage des lignes. Affichez ensuite les lignes vides avec la facette `Facet > Customized facets > Facet by blank` puis supprimez-les avec `All > Edit rows > Remove all matching rows`.
+
+Séparez les catégories sur plusieurs lignes avec `Edit cells > Split multi-valued cells` et choisissez `|` comme caractère séparateur.
+
+Apliquez une facette textuelle sur la colonne des catégories et cliquez sur le bouton `Cluster` de la facette. Uniformisez les catégories.
+
+Rassemblez de nouveau les catégories par `Edit cells > Join multi-valued cells` sur la colonne des _Categories_.
