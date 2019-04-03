@@ -175,7 +175,11 @@ Il existe des lignes avec le même _Record ID_. La colonne étant de type numér
 
 Pour supprimer les doublons, triez le contenu de la colonne et rendez le tri permanent avec `Reorder rows permanently` du menu `Sort`. Appliquez la commande `Edit cells > Blank down` sur la colonne _Record ID_. Si tout va bien, le contenu de la colonne est vidée sur 84 lignes. Le fait de vider le contenu de ces lignes crée des _records_ ou _entrées_. Il faut prendre garde de bien rester en mode d'affichage des lignes. Affichez ensuite les lignes vides avec la facette `Facet > Customized facets > Facet by blank` puis supprimez-les avec `All > Edit rows > Remove all matching rows`.
 
-Séparez les catégories sur plusieurs lignes avec `Edit cells > Split multi-valued cells` et choisissez `|` comme caractère séparateur.
+En apparence, les catégories sont séparées par des `|` mais si ont crée un filtre avec l'expression régulière `[|]{2,100}` on se rend compte qu'il peut y avoir deux `|` consécutifs comme séparateur.
+
+On peut se laisser les doubles barres verticles telles quelles et séparer les catégories sur plusieurs lignes avec `Edit cells > Split multi-valued cells` et choisissez l'expression régulière `[|]+` comme caractère séparateur.
+
+On peut aussi remplacer les doubles barres verticales avant de spérarer les catégories avec la commande `Edit cells > Transform` et la formule GREL `value.replace('||', '|')`.
 
 Apliquez une facette textuelle sur la colonne des catégories et cliquez sur le bouton `Cluster` de la facette. Uniformisez les catégories.
 
