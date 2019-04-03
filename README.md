@@ -151,7 +151,39 @@ Si on applique une facette textuelle sur la colonne _Commune de résidence_, on 
 
 > Cette formule mystérieuse est une expression en GREL (General Refine Expression Language), un language qui permet d'executer une série d'opérations dans OpenRefine. Pour en savoir plus sur le GREL, voir [le chapitre sur le GREL de la documentation officielle de OpenRefine](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) (en anglais) ou [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/annexe-structure-de-donnees-et-grel.html) (en français)
 
-## Atelier n°x : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
+## Atelier n°3 : Fusionner un inventaire de variétés d'arbres dans des villes françaises avec un fichier d'informations sur ces villes
+
+Le fichier [donnees_exo2.csv](Files/donnees_exo2.csv) contient un inventaire des espèces d'arbres plantés dans des villes françaises (les données sont fantaisistes). On souhaiterait ajouter dans ce fichier les informations sur les villes qui se trouvent dans le fichier [donnees_villes.csv](Files/donnees_villes.csv) (département, région, nombre d'habitants).
+
+Pour fusionner les deux fichiers avec OpenRefine, il faut installer au préalable le [plugin VIB-BITS](https://www.bits.vib.be/software-overview/openrefine) développé par le BioInformatics Training and Services du Vlaams Intituut voor Biotechnologie.
+
+Téléchargez et dézippez le fichier vib-bits.zip. Vous devez obtneir un dossier _vib-bits_.
+
+Allez dans la liste des projets de OpenRefine:  menu `Open Project`...
+
+![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
+
+... puis cliquez sur `Browse workspace directory`.
+
+Créez dans le répertoire qui s'affiche un sous-répertoire _extensions_ et copiez-y le répertoire _vib-bits_. Quittez OpenRefine et relancez-le.
+
+> Pour quitter OpenRefine, il ne suffit pas de quitter votre navigateur web. Si vous êtes sous Windows, il faut fermer la ligne de commande dans laquelle OpenRefine est en cours d'exécution. Si vous êtes sous Mac, vous utilisez la commande `Quit` du menu de OpenRefine (Sous Mac, OpenRefine conserve son propre menu, en plus de celui du navigateur dans lequel s'exécute son interface). Sous Linux, il faut quitter le shell dans lequel s'execute OpenRefine avec Ctrl + C.
+
+Si le plugin est correctement installé, un bouton VIB-BITS apparait en haut à droite en ouvrant n'importe quel projet.
+
+Importez dans OpenRefine le fichier [donnees_exo2.csv](Files/donnees_exo2.csv) dans un projet que vous nommerez _Données Exo n°2_. Vous choisirez l'encodage (`Character encoding`) UTF-8 dans les paramètres d'importation.
+
+Séparer les villes dans des lignes distinctes avec `Edit cells > Split multi-valued cells` en choisissant le ; comme séparateur.
+
+Recopiez le nom de l'espèce et le nombre de spéciments dans les nouvelles lignes en appliquant `Edit cells > Fill down` sur les deux colonnes concernées.
+
+Appliquez une facette textuelle sur la colonne des villes pour en uniformiser les noms.
+
+Importez dans un projet que vous nommerez _Données villes_, le fichier [donnees_villes.csv](Files/donnees_villes.csv). Le fichier est également encodé en UTF-8.
+
+Retournez dans le projet _Données Exo n°2_. Puis depuis la colonne _ville_ choisissez `Edit column > Add column(s) from other projects`, qui a été rajouté par le plugin VIB-BITS. Choisissez le projet _Données villes_ puis la colonne correspondante _ville_ (il s'agit là de la colonne _ville_ de _Données villes_) puis les colonnes à importer : _dpt_, _region_, _habitants_.
+
+## Atelier n°4 : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
 
 Cet atelier s'inspire de "[Cleaning Data with OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine)", The Programming Historian 2 (2013), Seth van Hooland, Ruben Verborgh, and Max De Wilde. Vous trouverez dans cet article en ligne le détail des opérations à réaliser (en anglais).
 
