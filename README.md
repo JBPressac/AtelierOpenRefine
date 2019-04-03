@@ -177,7 +177,17 @@ Importez dans un projet que vous nommerez _Données villes_, le fichier [donnees
 
 Retournez dans le projet _Données Exo n°2_. Puis depuis la colonne _ville_ choisissez `Edit column > Add column(s) from other projects`, une nouvelle fonction rajoutée par le plugin VIB-BITS. Choisissez le projet _Données villes_ puis la colonne correspondante _ville_ (il s'agit là de la colonne _ville_ de _Données villes_) puis les colonnes à importer : _dpt_, _region_, _habitants_.
 
-## Atelier n°4 : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
+## Atelier n°4 : Réorganiser l'inventaire des arbres avec une ligne par ville
+
+Nous allons maintenant reprendre le projet précédent et rassembler sur une seule ligne toutes les données concernant la même ville.
+
+> Cet atelier reprend les exercices de l'atelier OpenRefine donné lors de la formation [« Sciences des données : un nouveau challenge pour les métiers liés aux bases de données »](http://rbdd.cnrs.fr/spip.php?article288) du réseau métier rBDD, 5 au 7 novembre 2018 à Sète. Vous trouverez d'autres recettes pour réorganiser des colonnes en lignes et des lignes en colonnes dans [le cours OpenRefine à télécharger](http://rbdd.cnrs.fr/IMG/pdf/openrefinedoc.pdf?519/a6de5321fdbedeec29da6cc8b82250d02937ddeb).
+
+Revenez à l'état du projet _Données Exo n°2_ juste après l'importation des données et séparez les villes dans des lignes distinctes comme précédement. Réordonnez par ordre alphabétique la colonne des villes et rendez le tri permanent. Appliquez la commande `Edit cells > Blank down` sur la colonne _ville_. Si on passe en mode d'affichage des entrées ou `records`, on constate que OpenRefine garde un lien entre les lignes concernées par la même ville.
+
+Revenez en mode d'affichage des lignes ou `rows` et appliquez sur les colonnes _espece_ et _nombre_ la commande `Edit cells > Join multi-valued cells` en choisissant `|` comme séparateur.
+
+## Atelier n°5 : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
 
 Cet atelier s'inspire de "[Cleaning Data with OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine)", The Programming Historian 2 (2013), Seth van Hooland, Ruben Verborgh, and Max De Wilde. Vous trouverez dans cet article en ligne le détail des opérations à réaliser (en anglais).
 
