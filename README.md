@@ -1,13 +1,5 @@
 # Atelier OpenRefine, Nanterre, 5 avril 2019
 
-A faire :
-- Revenir sur la notion de row et records.
-- Revenir sur la possibilité de réordonner les colonnes depuis le menu de la première colonne
-- Modification de la valeur d'une cellule dans la facette ou avec _edit_ dans la cellule
-- TP avec l'union de deux projets
-- TP avec GREL (aborder les types de données, assembler des colonnes avec GREL)
-- Rechercher / remplacer
-
 [OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
 
 Avec OpenRefine, vous pourrez trier vos données, les filtrer, repérer des valeurs manquantes, incomplètes ou aberrantes, supprimer les doublons, harmoniser les valeurs, diviser le contenu d'une colonne en plusieurs colonnes ou plusieurs lignes, assembler le contenu de plusieurs colonnes en une seule, enrichir les données à partir de bases de données telles que [Wikidata][70123744].
@@ -18,17 +10,17 @@ OpenRefine peut importer des données tabulaires, c'est à dire structurées en 
 
   [61446736]: https://fr.wikipedia.org/wiki/Comma-separated_values "Comma-separated values"
 
-Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré [le fichier Excel de l'inventaire](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) des [cylindres phonographiques](https://fr.wikipedia.org/wiki/Cylindre_phonographique) du [Centre de recherche bretonne et celtique](https://bylg.hypotheses.org/464). Dans ce fichier, chaque ligne correspond à un cylindre et vous avez remarqué qu'une colonne, _Dublin Core Spatial Coverage_ contient le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien afficher les communes sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
+Dans quels cas OpenRefine pourrait vous être utile ? Vous avez récupéré par exemple [le fichier Excel de l'inventaire](https://f.hypotheses.org/wp-content/blogs.dir/2183/files/2018/12/Inventaire-des-cylindres-phonographiques-du-CRBC.xlsx) des [cylindres phonographiques](https://fr.wikipedia.org/wiki/Cylindre_phonographique) du [Centre de recherche bretonne et celtique](https://bylg.hypotheses.org/464). Dans ce fichier, chaque ligne correspond à un cylindre et vous avez remarqué qu'une colonne, _Dublin Core Spatial Coverage_ contient le nom de la commune d'où proviennent les cylindres. Vous aimeriez bien afficher les communes sur une carte mais vous ne savez pas comment récupérer leurs coordonnées géospatiales. Vous remarquez également quelques erreurs de saisie en appliquant un filtre dans Excel. Par exemple, Saint-Avé a été saisi une fois « Saint Avé » (sans tiret) et cinq fois « Saint-Avé » (avec un tiret). Vous remarquez également que la colonne peut contenir deux noms de communes, séparés par un point-virgule : Saint Avé (56206); Morlaix (29151).
 
 OpenRefine peut vous servir à :
 1. identifier les erreurs de saisie et les corriger,
-2. séparer les noms de communes,
+2. séparer les noms de communes saisis dans la même cellule,
 3. récupérer les coordonnées spatiales depuis la base de données Wikidata,
 4. exporter les noms des communes et les coordonnées spatiales pour les afficher sur une carte du site [uMap][5e5df6f9].
 
   [5e5df6f9]: https://umap.openstreetmap.fr/fr/ "uMap"
 
-Sous OpenRefine vous ne pourrez pas appliquer des formules mathématiques (calcul de sommes, de moyennes, test du Khi2, exponentielles, etc.) ou dessiner des graphiques comme vous pouvez le faire avec Excel ou LibreOffice Calc. Vous pourrez supprimer des colonnes avec OpenRefine mais pas des lignes.
+> OpenRefine vs. Excel : Sous OpenRefine vous ne pourrez pas appliquer des formules mathématiques (calcul de sommes, de moyennes, test du Khi2, exponentielles, etc.) ou dessiner des graphiques comme vous pouvez le faire avec Excel ou LibreOffice Calc. Vous pourrez supprimer des colonnes avec OpenRefine mais pas des lignes.
 
 ## Installation de OpenRefine
 OpenRefine fonctionne sous Microsoft Windows, Mac OS et Linux. Vous trouverez toutes les instructions d'installation sur [la documentation officielle](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions) (en anglais) ou sur [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/installation-lancement-desinstallation.html) (en français). Sous Windows, vous aurez probablement besoin d'installer le logiciel [Java](https://www.java.com/fr/download/) (Java est installé par défaut sous Mac et Linux).
@@ -62,9 +54,9 @@ De même, il n'y a pas de Ctrl + Z ou de Pomme + Z dans OpenRefine. Pour annuler
 
 ### OpenRefine ne modifie pas vos fichiers originaux
 
-OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher, le dossier de travail, allez dans la liste des projets (menu `Open Project`)...
+OpenRefine ne modifie pas les fichiers originaux Excel, LibreOffice, CSV, etc. Il importe les données et les sauvegarde dans son dossier de travail. Pour afficher le dossier de travail, allez dans la liste des projets (menu `Open Project`)...
 
-![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
+![Open Project](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
 
 ... puis cliquez sur `Browse workspace directory`.
 
@@ -110,7 +102,7 @@ Lorsque vous appliquez un tri sur une colonne (commande `Sort` du menu de la col
 
 Autre exemple. Vous souhaitez exploiter les réponses à un questionnaire en ligne mais certaines réponses étaient libres, notamment la commune de résidence et les diplômes obtenus. Comment uniformiser les réponses pour les analyser avec le logiciel R ?
 
-[Télécharger le fichier XLS](Files/Avoir60ans.xlsx), un inventaire réalisé dans le cadre de travaux dirigés en sciences sociales de l'Université de Bretagne Occidentale (merci à Nicole Roux).
+[Télécharger le fichier XLS](Files/Avoir60ans.xlsx), un inventaire réalisé dans le cadre de travaux dirigés en sciences sociales de l'Université de Bretagne Occidentale (merci à Nicole Roux pour ce fichier).
 
 1. Créez un nouveau projet OpenRefine et importez le fichier Excel.
 2. Appliquez une facette textuelle sur la colonne de la commune de résidence.
@@ -125,13 +117,13 @@ Si le nombre de cellules à nettoyer est trop élevé pour une édition à la ma
 
 ![Cluster](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-30_21_31_24_Avoir60ansxlsx_OpenRefine.png)
 
-> Pour comprendre les différents algorithmes, voir [le cours de Matthieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/explorer-et-nettoyer-ses-donnees.html#regrouper-des-valeurs-proches).
+> Pour comprendre les différents algorithmes des clusters, voir [le cours de Matthieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/explorer-et-nettoyer-ses-donnees.html#regrouper-des-valeurs-proches).
 
 Le problème, avec les précédentes solutions, c'est qu'elles ne permettent pas d'identifier formellement les communes. Par exemple, Tréméven est-elle [Tréméven](https://www.wikidata.org/wiki/Q688371) dans le Finistère ou [Tréméven](https://www.wikidata.org/wiki/Q214578) dans les Côtes-d'Armor ? Les communes saisies correpondent-elles vraiment à des communes ? Comment repérer ces erreurs ? La solution : Utiliser la réconciliation avec la base de données en ligne [Wikidata](https://www.wikidata.org).
 
 Certaines personnes ont répondu en mettant entre parenthèses le nom ou le numéro du département. On aurait tord de ce priver de cette information. Pour séparer le département dans une nouvelle colonne, on choisi dans le menu de la colonne _Commune de résidence_, `Edit column > Split into several columns`, on saisi comme séparateur une parenthèse ouvrante `(` et on coche la case `Remove this column`. On se retouve avec deux colonnes _Commune de résidence 1_ et _Commune de résidence 2_. En appliquant une facette textuelle sur _Commune de résidence 2_ on constate que certaines personnes ont répondu au questionnaire en confondant la parenthèse fermante avec le caractère °. On a donc par exemple `22°` au lieu de `22)`.
 
-On applique de nouveau la commande `Edit column > Split into several columns` mais sur la colonne _Commune de résidence 2_ et en saisisant cette fois `[)°]` comme séparateur. On coche la case `regular expression`.
+On applique de nouveau la commande `Edit column > Split into several columns` mais sur la colonne _Commune de résidence 2_ et en saisisant cette fois `[)°]` comme séparateur et en cochant la case `regular expression`.
 
 Faire une copie de la commune originale (`Edit column > Edit column based on this column`) puis sur la nouvelle colonne : `Reconcile > Start reconciling`.
 
@@ -151,29 +143,31 @@ Si on applique une facette textuelle sur la colonne _Commune de résidence_, on 
 
 > Cette formule mystérieuse est une expression en GREL (General Refine Expression Language), un language qui permet d'executer une série d'opérations dans OpenRefine. Pour en savoir plus sur le GREL, voir [le chapitre sur le GREL de la documentation officielle de OpenRefine](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) (en anglais) ou [le cours de Mathieu Saby](https://msaby.gitlab.io/atelier-openrefine-MASA/annexe-structure-de-donnees-et-grel.html) (en français)
 
-## Atelier n°3 : Fusionner un inventaire de variétés d'arbres dans des villes françaises avec un fichier d'informations sur ces villes
+## Atelier n°3 : Fusionner un inventaire de variétés d'arbres de villes françaises avec un fichier d'informations sur ces villes
 
 Le fichier [donnees_exo2.csv](Files/donnees_exo2.csv) contient un inventaire des espèces d'arbres plantés dans des villes françaises (les données sont fantaisistes). On souhaiterait ajouter dans ce fichier les informations sur les villes qui se trouvent dans le fichier [donnees_villes.csv](Files/donnees_villes.csv) (département, région, nombre d'habitants).
 
 Pour fusionner les deux fichiers avec OpenRefine, il faut installer au préalable le [plugin VIB-BITS](https://www.bits.vib.be/software-overview/openrefine) développé par le BioInformatics Training and Services du Vlaams Intituut voor Biotechnologie.
 
-Téléchargez et dézippez le fichier vib-bits.zip. Vous devez obtneir un dossier _vib-bits_.
+Téléchargez et dézippez le fichier vib-bits.zip. Vous devez obtenir un dossier _vib-bits_.
 
-Allez dans la liste des projets de OpenRefine:  menu `Open Project`...
+Allez dans la liste des projets de OpenRefine :  menu `Open Project`...
 
-![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
+![Open Project](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_45_28-Window.png)
 
 ... puis cliquez sur `Browse workspace directory`.
 
+![Browse workspace directory](https://github.com/JBPressac/AtelierOpenRefine/blob/master/Files/2019-03-28%2014_29_48-Window.png)
+
 Créez dans le répertoire qui s'affiche un sous-répertoire _extensions_ et copiez-y le répertoire _vib-bits_. Quittez OpenRefine et relancez-le.
 
-> Pour quitter OpenRefine, il ne suffit pas de quitter votre navigateur web. Si vous êtes sous Windows, il faut fermer la ligne de commande dans laquelle OpenRefine est en cours d'exécution. Si vous êtes sous Mac, vous utilisez la commande `Quit` du menu de OpenRefine (Sous Mac, OpenRefine conserve son propre menu, en plus de celui du navigateur dans lequel s'exécute son interface). Sous Linux, il faut quitter le shell dans lequel s'execute OpenRefine avec Ctrl + C.
+> Pour quitter OpenRefine, il ne suffit pas de quitter votre navigateur web. Si vous êtes sous Windows, il faut fermer la ligne de commande dans laquelle OpenRefine est en cours d'exécution. Si vous êtes sous Mac, utilisez la commande `Quit` du menu de OpenRefine (Sous Mac, OpenRefine conserve son propre menu, en plus de celui du navigateur dans lequel s'exécute son interface). Sous Linux, il faut quitter le shell dans lequel s'execute OpenRefine avec Ctrl + C.
 
 Si le plugin est correctement installé, un bouton VIB-BITS apparait en haut à droite en ouvrant n'importe quel projet.
 
 Importez dans OpenRefine le fichier [donnees_exo2.csv](Files/donnees_exo2.csv) dans un projet que vous nommerez _Données Exo n°2_. Vous choisirez l'encodage (`Character encoding`) UTF-8 dans les paramètres d'importation.
 
-Séparer les villes dans des lignes distinctes avec `Edit cells > Split multi-valued cells` en choisissant le ; comme séparateur.
+Séparer les villes dans des lignes distinctes avec `Edit cells > Split multi-valued cells` en choisissant le `;` comme séparateur.
 
 Recopiez le nom de l'espèce et le nombre de spéciments dans les nouvelles lignes en appliquant `Edit cells > Fill down` sur les deux colonnes concernées.
 
@@ -181,7 +175,7 @@ Appliquez une facette textuelle sur la colonne des villes pour en uniformiser le
 
 Importez dans un projet que vous nommerez _Données villes_, le fichier [donnees_villes.csv](Files/donnees_villes.csv). Le fichier est également encodé en UTF-8.
 
-Retournez dans le projet _Données Exo n°2_. Puis depuis la colonne _ville_ choisissez `Edit column > Add column(s) from other projects`, qui a été rajouté par le plugin VIB-BITS. Choisissez le projet _Données villes_ puis la colonne correspondante _ville_ (il s'agit là de la colonne _ville_ de _Données villes_) puis les colonnes à importer : _dpt_, _region_, _habitants_.
+Retournez dans le projet _Données Exo n°2_. Puis depuis la colonne _ville_ choisissez `Edit column > Add column(s) from other projects`, une nouvelle fonction rajoutée par le plugin VIB-BITS. Choisissez le projet _Données villes_ puis la colonne correspondante _ville_ (il s'agit là de la colonne _ville_ de _Données villes_) puis les colonnes à importer : _dpt_, _region_, _habitants_.
 
 ## Atelier n°4 : Nettoyage d'un extrait de l'inventaire du Powerhouse Museum
 
@@ -193,7 +187,7 @@ OpenRefine va nous servir à supprimer les lignes sans _Record ID_, à supprimer
 
 ### Importer un fichier TSV (Tab-separated values)
 
-Importez dans OpenRefine le fichier phm-collection.tsv en décochant la case `Quotation marks are used to enclose cells containing column separators` et cochez la case `Parse cell text into numbers, dates, …`. Si vous avez bien paramétré l'import, le tableau des données doit comporter 75 814 lignes (ou `rows`).
+Importez dans OpenRefine le fichier phm-collection.tsv en décochant la case `Quotation marks are used to enclose cells containing column separators` et cochez la case `Parse cell text into numbers, dates, …`. Si vous avez bien paramétré l'import, le tableau des données doit comporter 75 814 lignes ou `rows`.
 
 > Quand vous importez un fichier CSV ou TSV, vous avez la possibilité de spécifier son encodage. L'encodage est la manière de coder informatiquement des caractères alpha-numériques. Quelques encodages : UTF-8, ISO-8859-1, Windows-1252 (désigné sous le terme ANSI dans certains logiciels). OpenRefine ne detecte pas toujours très bien l'encodage des fichiers à importer, ce qui provoque des erreurs d'affichage des caractères accentués. Pour connaitre l'encodage des fichiers, vous pouvez les ouvrir avec Notepad++ (Microsoft Windows).
 
