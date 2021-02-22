@@ -1,4 +1,4 @@
-# Atelier OpenRefine, Nanterre, 5 avril 2019
+# Atelier OpenRefine, Institut des sciences sociales du politique (ISP), Nanterre, 5 avril 2019
 
 [OpenRefine](http://openrefine.org) est un logiciel libre permettant de traiter des données : inventaires d'archives, bibliographies, réponses à des questionnaires, données prosopographiques, etc.
 
